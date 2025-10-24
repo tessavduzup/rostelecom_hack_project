@@ -1,17 +1,23 @@
+import { useNavigate, Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
-function Authentication() {
+function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log('Форма отправлена')
+    }
 
   return (
     <>
       <div>
         <h1>Авторизация</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h3>Имя пользователя</h3>
           <input
-            type="username"
+            type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -21,13 +27,13 @@ function Authentication() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <button type='submit'>Отправить</button>
         </form>
-        <button>Отправить</button>
         <h4>Нет аккаунта?</h4>
-        <a href=''>Зарегистрироваться</a>
+        <Link to='/reg'>Зарегистрироваться</Link>
       </div>
     </>
   )
 }
 
-export default Authentication
+export default Login
