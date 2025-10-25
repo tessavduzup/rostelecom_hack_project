@@ -6,6 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import ForeignKey
 from Base import Base
+from .Service import Service
 
 class Project(Base):
     __tablename__ = 'projects'
