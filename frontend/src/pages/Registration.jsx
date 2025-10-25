@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { validateEmail, validatePassword, validateFIO } from '../utils/validators';
+import { registerUser } from '../api/authAPI';
 
 function Registration() {
     const {
@@ -10,13 +11,39 @@ function Registration() {
         formState: { errors }
     } = useForm();
 
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data))
+    const [submitError, setSubmitError] = useState('');
+    const [submitSuccess, setSubmitSuccess] = useState('');
+    const onSubmit = async (data) => {
+        try {
+            setSubmitError('');
+            setSubmitSuccess('');
+            
+            const userData = await registerUser({
+                firstName: data.first_name,
+                lastName: data.last_name,
+                middleName: data.middle_name,
+                email: data.email,
+                password: data.password
+            });
+            
+            setSubmitSuccess('Регистрация прошла успешно!');
+
+            if (userData.token){
+                localStorage.setItem('token', userData.token);
+                localStorage.setItem('user', JSON.stringify(userData.user));
+            }
+        } catch (error){
+            setSubmitError(error.message || 'Ошибка при регистрации');
+        }
     }
 
     return (
         <div>
             <h1>Регистрация</h1>
+
+            {submitSuccess && <div className='submitSuccess'>{submitSuccess}</div>}
+            {submitError && <div className='submitErrors'>{submitError}</div>}
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h3>Имя:</h3>
                 <input

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { validateEmail, validatePassword } from '../utils/validators';
+import { loginUser } from '../api/authAPI';
 
 import './../styles/Login.css'
 
@@ -12,15 +13,34 @@ function Login() {
       formState: { errors }
   } = useForm();
 
-  const onSubmit = (data) => {
-      alert(JSON.stringify(data))
+  const [submitError, setSubmitError] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState('');
+
+  const onSubmit = async (data) => {
+      try {
+        setSubmitError('')
+        setSubmitSuccess('')
+
+        const userData = await loginUser(data.username, data.password)
+
+        localStorage.setItem('token', userData.token)
+        localStorage.setItem('user', JSON.stringify(userData.user))
+
+        setSubmitSuccess('Вход успешно выполнен!')
+      } catch (error) {
+        setSubmitError(error.message || 'Ошибка при входе')
+      }
   }
 
   return (
     <>
       <div className='Login'>
         <h1>Авторизация</h1>
-        <form onSubmit={handleSubmit(onSubmit)} >
+
+        {submitSuccess && <div className='submitSuccess'>{submitSuccess}</div>}
+        {submitError && <div className='submitErrors'>{submitError}</div>}
+
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h3>Имя пользователя</h3>
           <input
             type="text" className='sign'
