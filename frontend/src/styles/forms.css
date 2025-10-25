@@ -1,0 +1,125 @@
+/* ======= Формы: селекты и поля даты ======= */
+:root {
+  --purple: #6d28d9;    /* фиолетовый акцент */
+  --orange: #f97316;    /* оранжевый акцент */
+  --text: #111827;      /* тёмный текст */
+  --muted: #6b7280;     /* вторичный текст */
+  --border: #e5e7eb;    /* рамка */
+  --radius: 12px;
+  --shadow-focus-purple: 0 0 0 4px rgba(109, 40, 217, 0.12);
+  --shadow-focus-orange: 0 0 0 4px rgba(249, 115, 22, 0.12);
+}
+
+/* ===== Общие поля ===== */
+form select,
+form input[type="date"] {
+  width: 100%;
+  padding: 12px 42px 12px 14px; /* запас справа под стрелку */
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  font: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+/* ===== Hover (без изменения цвета стрелки) ===== */
+form select:hover,
+form input[type="date"]:hover {
+  background: #fff;
+  border-color: #d9dde3;
+}
+
+/* ===== Focus ===== */
+form select:focus {
+  border-color: var(--orange);
+  box-shadow: var(--shadow-focus-orange);
+}
+form input[type="date"]:focus {
+  border-color: var(--purple);
+  box-shadow: var(--shadow-focus-purple);
+}
+
+/* ===== Required + invalid ===== */
+form select:required:invalid,
+form input[type="date"]:required:invalid {
+  border-color: #fca5a5;
+}
+
+/* ===== Label-like стили для твоих <h3> ===== */
+form > h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 12px 0 8px;
+}
+form > h3 + select,
+form > h3 + input[type="date"] {
+  margin-bottom: 6px;
+}
+
+/* ===== Кастомная стрелка у select (всегда фиолетовая) ===== */
+form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236d28d9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px 18px;
+  cursor: pointer;
+}
+
+/* ===== Firefox фиксация позиции стрелки ===== */
+@-moz-document url-prefix() {
+  form select {
+    background-position: right 12px center;
+  }
+}
+
+/* ===== Календарик у поля даты (WebKit) ===== */
+form input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  opacity: 0.9;
+  filter: invert(20%) sepia(80%) saturate(250%)
+    hue-rotate(240deg) brightness(0.9);
+  /* делает иконку фиолетовой */
+}
+form input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  filter: invert(20%) sepia(90%) saturate(250%)
+    hue-rotate(240deg) brightness(0.95);
+}
+
+/* убираем спиннеры и очистку в некоторых браузерах */
+form input[type="date"]::-webkit-inner-spin-button,
+form input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+/* ===== Ошибки (p.errors) ===== */
+form .errors {
+  margin: 4px 0 8px;
+  font-size: 13px;
+  color: #b91c1c;
+}
+
+/* ===== Disabled ===== */
+form select:disabled,
+form input[type="date"]:disabled {
+  background: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 480px) {
+  form select,
+  form input[type="date"] {
+    padding: 11px 40px 11px 12px;
+    border-radius: 10px;
+  }
+}

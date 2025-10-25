@@ -1,0 +1,119 @@
+/* ===== Registration (без изменения разметки) ===== */
+:root{
+  --purple: #6d28d9;
+  --orange: #f97316;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --radius: 14px;
+}
+
+/* Та же «карточка», но пошире */
+div:has(> form){
+  width: min(100%, 560px);
+  margin: 80px auto;
+  padding: 28px;
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 50px rgba(17,24,39,.08);
+}
+
+/* Заголовок, если есть */
+div:has(> form) > h1{
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin: 0 0 20px;
+}
+
+/* Сообщения submit */
+.submitSuccess, .submitErrors{
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 1px solid;
+}
+.submitSuccess{ background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
+.submitErrors{ background:#fef2f2; color:#991b1b; border-color:#fecaca; }
+
+/* Форма: компактная сетка без изменений JSX */
+form{ display: grid; gap: 14px; }
+
+/* Твои подписи полей идут в <h3> — сделаем их «лейблами» */
+form > h3{
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 6px 0 6px;
+}
+
+/* Инпуты без классов */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"]{
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+form input:focus{
+  border-color: var(--orange);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--orange) 18%, transparent);
+}
+
+/* Ошибки под полями */
+.errors{
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #b91c1c;
+}
+
+/* Кнопка (у тебя в <h3>) */
+form > h3 > button,
+button[type="submit"]{
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--purple), var(--orange));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .05s ease, filter .15s ease;
+}
+form > h3 > button:hover{ filter: brightness(1.03); }
+form > h3 > button:active{ transform: translateY(1px); }
+
+/* Низ: «Уже есть аккаунт?» */
+div:has(> form) > h3:last-of-type{
+  margin: 16px 0 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+div:has(> form) > a{
+  color: var(--purple);
+  font-weight: 600;
+  text-decoration: none;
+}
+div:has(> form) > a:hover{
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+/* Адаптив */
+@media (max-width: 480px){
+  div:has(> form){ margin: 40px auto; padding: 22px; }
+  div:has(> form) > h1{ font-size: 24px; }
+}

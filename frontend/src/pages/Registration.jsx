@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { validateEmail, validatePassword, validateFIO } from '../utils/validators';
 import { registerUser } from '../api/authAPI';
+import '../styles/Registration.css';
 
 function Registration() {
     const {
