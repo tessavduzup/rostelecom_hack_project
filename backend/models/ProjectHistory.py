@@ -1,14 +1,15 @@
 from datetime import datetime
 import sqlalchemy
 from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import ForeignKey
 from Base import Base
 
 class ProjectHistory(Base):
     __tablename__ = 'project_history'
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    project_id: Mapped[int] = mapped_column(nullable=False)
-    user_id: Mapped[int] = mapped_column(nullable=False)
+    project_id: Mapped[int] = mapped_column(ForeignKey("projects.id"), nullable=False)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
     change_timestamp: Mapped[datetime] = mapped_column(default=datetime.now)
     change_field: Mapped[str] = mapped_column(nullable=False)
     old_value: Mapped[str] = mapped_column(sqlalchemy.Text())
