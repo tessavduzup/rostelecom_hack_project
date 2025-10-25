@@ -1,0 +1,75 @@
+.project-plate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.project-plate:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: #1890ff;
+}
+
+.project-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.project-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.project-status {
+  padding: 4px 12px;
+  border: 1px solid;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.project-action {
+  margin-left: 16px;
+}
+
+.details-link {
+  color: #ff4f12;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.details-link:hover {
+  color: #ff6b35;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .project-plate {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .project-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .project-action {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+}

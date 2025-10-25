@@ -1,0 +1,44 @@
+{
+    "@ant-design/icons@6.1.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react",
+        "licenseUrl": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react/raw/master/LICENSE",
+        "parents": "hackaton"
+    },
+    "antd@5.27.6": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ant-design/ant-design",
+        "licenseUrl": "https://github.com/ant-design/ant-design/raw/master/LICENSE",
+        "parents": "hackaton"
+    },
+    "axios@1.12.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/axios/axios",
+        "licenseUrl": "https://github.com/axios/axios/raw/master/LICENSE",
+        "parents": "hackaton"
+    },
+    "react-dom@19.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react",
+        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+        "parents": "hackaton"
+    },
+    "react-hook-form@7.65.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-hook-form/react-hook-form",
+        "licenseUrl": "https://github.com/react-hook-form/react-hook-form/raw/master/LICENSE",
+        "parents": "hackaton"
+    },
+    "react-router-dom@7.9.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/remix-run/react-router",
+        "licenseUrl": "https://github.com/remix-run/react-router/raw/master/LICENSE.md",
+        "parents": "hackaton"
+    },
+    "react@19.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react",
+        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+        "parents": "hackaton"
+    }
+}
