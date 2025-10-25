@@ -1,19 +1,21 @@
 from datetime import datetime
+from typing import Optional
+
 import sqlalchemy
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from Base import Base
 
 class Project(Base):
     __tablename__ = 'projects'
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    organization_name: Mapped[str] = mapped_column(unique=True, nullable=False)
+    organization_name: Mapped[str] = mapped_column(nullable=False)
     inn: Mapped[str] = mapped_column(nullable=False)
     project_name: Mapped[str] = mapped_column(nullable=False)
     service_id: Mapped[int] = mapped_column(nullable=False)
     payment_type_id: Mapped[int] = mapped_column(nullable=False)
     stage_id: Mapped[int] = mapped_column(nullable=False)
-    realisation_probability: Mapped[int] = mapped_column()
+    realisation_probability: Mapped[float] = mapped_column()
     manager_name: Mapped[str] = mapped_column(nullable=False)
     business_segment_id: Mapped[int] = mapped_column(nullable=False)
     implementation_year: Mapped[int] = mapped_column(nullable=False)
@@ -30,6 +32,15 @@ class Project(Base):
     current_status: Mapped[str] = mapped_column(sqlalchemy.Text())
     done_this_period: Mapped[str] = mapped_column(sqlalchemy.Text())
     next_period_plans: Mapped[str] = mapped_column(sqlalchemy.Text())
+
+    # Relationships
+    service: Mapped['Service'] = relationship()
+    payment_type: Mapped['PaymentType'] = relationship()
+    stage: Mapped['Stage'] = relationship()
+    business_segment: Mapped['BusinessSegment'] = relationship()
+    evaluation_status: Mapped[Optional['EvaluationStatus']] = relationship()
+    revenues: Mapped[list['Revenue']] = relationship(back_populates='project')
+    costs: Mapped[list['Cost']] = relationship(back_populates='project')
 
     def __repr__(self) -> str:
         return (
