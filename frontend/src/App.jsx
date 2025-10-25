@@ -6,11 +6,14 @@ import User from './pages/User';
 import CreateProject from './pages/CreateProject';
 import RevenueForm from './forms/RevenueForm';
 import CostsForm from './forms/CostsForm'
-
+import Header from './components/Header';
 
 function App() {
   return (
+    <>
+    <>
     <Router>
+      <Header />
       <Routes>
        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
@@ -21,6 +24,7 @@ function App() {
         <Route path="/cr" element={<CostsForm />} />
       </Routes>
     </Router>
+    </></>
   )
 }
 

@@ -30,6 +30,16 @@ export async function registerUser(userData) {
     }
 }
 
+export async function getProjectAttribute() {
+    try {
+        const response = await API.get('/get-project-attribute', userData)
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Ошибка получения атрибутов проекта');
+    }
+    
+}
+
 export async function submitProject(userData) {
     try {
         const response = await API.post('/create-project', userData);
