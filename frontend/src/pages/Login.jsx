@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { validateEmail, validatePassword } from '../utils/validators';
 import { loginUser } from '../api/authAPI';
+import '../styles/Login.css';
 
 
 function Login() {

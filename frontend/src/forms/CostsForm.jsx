@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { validateNumber, validateDate } from '../utils/validators';
 import { loginUser } from '../api/authAPI';
+import '../styles/forms.css';
 
 function CostsForm() {
   const {
