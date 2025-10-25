@@ -29,3 +29,21 @@ export async function registerUser(userData) {
         throw new Error(error.response?.data?.message || 'Ошибка регистрации');
     }
 }
+
+export async function sendRevenue(userData) {
+    try {
+        const response = await API.post('/create-project/send-revenue', userData);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Ошибка отправки выручки')
+    }
+}
+
+export async function sendCosts(userData) {
+    try {
+        const response = await API.post('/create-project/send-costs', userData);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Ошибка отправки затрат')
+    }
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { validateNumber, validateDate } from '../utils/validators';
-import { loginUser } from '../api/authAPI';
+import { loginUser, sendCosts } from '../api/authAPI';
 
 function CostsForm() {
   const {
@@ -32,6 +32,15 @@ function CostsForm() {
         
         setSubmitError('')
         setSubmitSuccess('')
+
+        const userData = await sendCosts({
+            date_start: data.date_start,
+            date_end: data.date_end,
+            amount: data.amount,
+            type: data.type,
+            status: data.status,
+
+        })
 
         setSubmitSuccess('Затраты успешно добавлены!')
       } catch (error) {
@@ -80,8 +89,8 @@ function CostsForm() {
 
           <h3>Вид затрат</h3>
           <select
-            {...register("category", {
-              required: "Выберите категорию"
+            {...register("type", {
+              required: "Выберите вид затрат"
             })}
           >
           {categories.map(option => (
@@ -93,8 +102,8 @@ function CostsForm() {
 
           <h3>Статус отражения затрат</h3>
           <select
-            {...register("category", {
-              required: "Выберите категорию"
+            {...register("status", {
+              required: "Выберите статус затрат"
             })}
           >
           {categories.map(option => (
