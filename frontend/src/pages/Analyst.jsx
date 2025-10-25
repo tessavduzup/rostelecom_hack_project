@@ -1,4 +1,3 @@
-// AnalystDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import QueryBuilder from '../components/QueryBuilder';
 import { mockMetadataAPI, mockReportsAPI } from '../api/mockData';
@@ -16,56 +15,52 @@ const Analyst = () => {
 
   const loadMetadata = async () => {
     try {      
+      console.log('📡 Loading metadata...');
+      
       const filtersResponse = await mockMetadataAPI.getFilters();
       const templatesResponse = await mockMetadataAPI.getReportTemplates();
       
-      console.log('Raw filters response:', filtersResponse);
-      console.log('Raw templates response:', templatesResponse);
+      console.log('✅ Filters response:', filtersResponse);
+      console.log('✅ Templates response:', templatesResponse);
       
-      let filtersData = [];
-      if (Array.isArray(filtersResponse)) {
-        filtersData = filtersResponse;
-      } else if (filtersResponse && Array.isArray(filtersResponse.project_attributes)) {
-        filtersData = filtersResponse.project_attributes;
-      } else if (filtersResponse && Array.isArray(filtersResponse.data)) {
-        filtersData = filtersResponse.data;
-      }
-      
-      let templatesData = [];
-      if (Array.isArray(templatesResponse)) {
-        templatesData = templatesResponse;
-      } else if (templatesResponse && Array.isArray(templatesResponse.data)) {
-        templatesData = templatesResponse.data;
-      }
+      // Извлекаем массив фильтров из ответа
+      const filtersData = filtersResponse?.project_attributes || [];
+      const templatesData = Array.isArray(templatesResponse) ? templatesResponse : [];
       
       setAvailableFilters(filtersData);
       setReportTemplates(templatesData);
       
+      console.log('📊 Available filters:', filtersData);
+      console.log('📋 Available templates:', templatesData);
+      
     } catch (error) {
+      console.error('❌ Error loading metadata:', error);
       setAvailableFilters([]);
       setReportTemplates([]);
     }
   };
 
   const executeQuery = async (query) => {
+    console.log('🚀 Executing query:', query);
     setLoading(true);
     try {
       const data = await mockReportsAPI.executeQuery(query);
+      console.log('✅ Query result:', data);
       setReportData(data);
       setCurrentQuery(query);
     } catch (error) {
-      console.error('Query execution error:', error);
+      console.error('❌ Query execution error:', error);
+      alert('Ошибка выполнения запроса: ' + error.message);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="analyst-dashboard">
-      <h1>Панель аналитика - ТЕСТОВЫЙ РЕЖИМ</h1>
-      <p style={{color: 'orange'}}>Используются тестовые данные</p>
+    <div className="analyst-dashboard" style={{ padding: '20px' }}>
+      <h1>Панель аналитика</h1>
       
-      <div className="dashboard-content">
+      <div className="dashboard-content" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
         <div className="query-section">
           <QueryBuilder
             availableFilters={availableFilters}
@@ -76,15 +71,22 @@ const Analyst = () => {
         </div>
         
         <div className="results-section">
-          {reportData && (
+          {reportData ? (
             <div>
-              <h3>Результаты отчета ({reportData.metadata.total_count} записей)</h3>
-              <div style={{overflow: 'auto', maxHeight: '400px'}}>
-                <table border="1" style={{borderCollapse: 'collapse', width: '100%'}}>
+              <h3>
+                Результаты отчета ({reportData.metadata.total_count} записей)
+                {currentQuery.fields && currentQuery.fields.length === 0 && (
+                  <span style={{ fontSize: '14px', color: '#666', marginLeft: '10px' }}>
+                    (все поля)
+                  </span>
+                )}
+              </h3>
+              <div style={{overflow: 'auto', maxHeight: '400px', border: '1px solid #ddd', borderRadius: '4px'}}>
+                <table style={{borderCollapse: 'collapse', width: '100%', fontSize: '14px'}}>
                   <thead>
                     <tr>
                       {reportData.metadata.fields.map(field => (
-                        <th key={field} style={{padding: '8px', background: '#f0f0f0'}}>
+                        <th key={field} style={{padding: '8px', background: '#f0f0f0', border: '1px solid #ddd'}}>
                           {field}
                         </th>
                       ))}
@@ -94,7 +96,7 @@ const Analyst = () => {
                     {reportData.data.map((row, index) => (
                       <tr key={index}>
                         {reportData.metadata.fields.map(field => (
-                          <td key={field} style={{padding: '8px'}}>
+                          <td key={field} style={{padding: '8px', border: '1px solid #ddd'}}>
                             {row[field]}
                           </td>
                         ))}
@@ -103,6 +105,17 @@ const Analyst = () => {
                   </tbody>
                 </table>
               </div>
+            </div>
+          ) : (
+            <div style={{ 
+              padding: '40px', 
+              textAlign: 'center', 
+              color: '#999',
+              border: '2px dashed #ddd',
+              borderRadius: '8px'
+            }}>
+              <h3>Результаты отчета</h3>
+              <p>Выполните запрос для отображения данных</p>
             </div>
           )}
         </div>
