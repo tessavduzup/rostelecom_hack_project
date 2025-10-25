@@ -31,7 +31,7 @@ pip-delete-this-directory.txt
 .pytest_cache/
 
 # IDE specific files
-../.idea/
+.idea/
 .vscode/
 .vs/
 *.swp
@@ -47,4 +47,3 @@ Thumbs.db
 *.tmp
 *.sqlite3
 *.db
-*.env
