@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { validateEmail, validatePassword } from '../utils/validators';
 import { loginUser } from '../api/authAPI';
 
+import './../styles/Login.css'
 
 function Login() {
   const {
@@ -33,7 +34,7 @@ function Login() {
 
   return (
     <>
-      <div>
+      <div className='Login'>
         <h1>Авторизация</h1>
 
         {submitSuccess && <div className='submitSuccess'>{submitSuccess}</div>}
@@ -42,7 +43,7 @@ function Login() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <h3>Имя пользователя</h3>
           <input
-            type="text"
+            type="text" className='sign'
             {...register("username", {
               required: "Имя пользователя обязательно",
               validate: validateEmail
@@ -52,7 +53,7 @@ function Login() {
           
           <h3>Пароль</h3>
           <input
-            type="password"
+            type="password" className='sign'
             {...register("password", {
               required: "Пароль обязателен",
               validate: validatePassword
@@ -63,7 +64,7 @@ function Login() {
           <h3><button type='submit'>Войти</button></h3>
         </form>
         <h4>Нет аккаунта?</h4>
-        <Link to='/reg'>Зарегистрироваться</Link>
+        <Link to='/reg' className='link'>Зарегистрироваться</Link>
       </div>
     </>
   )

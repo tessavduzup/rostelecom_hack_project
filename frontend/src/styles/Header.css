@@ -1,0 +1,46 @@
+/* Header.css */
+.app-header {
+  margin: 5px;
+  height: 100px;
+  background: #ffffff;
+  display: flex;
+  padding: 0 40px;
+  box-shadow: 0 2px 8px #7c00ff;
+  border-radius: 5px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  
+  gap: 16px;
+}
+
+.logo-image {
+  height: 32px;
+  width: auto;
+}
+
+.company-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+}
+
+.create-project-button {
+  background: #ff4f12;
+  height: 55px;
+  width: 220px;
+  border: none;
+}
+
+.create-project-button:hover {
+  background: #e04510 !important;
+  border-color: #e04510 !important;
+}
