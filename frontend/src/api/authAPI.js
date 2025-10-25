@@ -1,53 +1,31 @@
-const API_BASE_URL = 'http://localhost:3001/api'; 
-export async function loginUser(username, password) {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password
-        })
-    });
+import axios from 'axios'
 
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Ошибка авторизации');
+const API = axios.create({
+    baseURL: 'http://localhost:3001/api'
+})
+
+API.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token')
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`
     }
+    return config
+})
 
-    return await response.json();
+export async function loginUser(username, password) {
+    try {
+        const response = await API.post('/auth/login', { username, password });
+        return response.data
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Ошибка авторизации')
+    }
 }
 
 export async function registerUser(userData) {
-    const response = await fetch(`${API_BASE_URL}/auth/register`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData)
-    });
-
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Ошибка регистрации');
+    try {
+        const response = await API.post('/auth/register', userData);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Ошибка регистрации');
     }
-
-    return await response.json();
-}
-
-export async function getUserProfile(token) {
-    const response = await fetch(`${API_BASE_URL}/user/profile`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        }
-    });
-
-    if (!response.ok) {
-        throw new Error('Ошибка получения данных пользователя');
-    }
-
-    return await response.json();
 }
