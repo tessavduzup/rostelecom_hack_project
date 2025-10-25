@@ -1,24 +1,27 @@
 .project-plate {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: white;
+  justify-content: space-between;
+  padding: 16px;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
-  padding: 16px 20px;
   margin-bottom: 12px;
-  transition: all 0.2s ease;
+  background: white;
+  transition: box-shadow 0.2s;
 }
 
 .project-plate:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-color: #1890ff;
 }
 
-.project-info {
+.project-main-content {
   display: flex;
   align-items: center;
-  gap: 16px;
+  width: 100%;
+  gap: 12px;
+}
+
+.project-name-section {
   flex: 1;
 }
 
@@ -26,50 +29,49 @@
   font-size: 16px;
   font-weight: 500;
   color: #333;
-  margin: 0;
 }
 
-.project-status {
-  padding: 4px 12px;
-  border: 1px solid;
-  border-radius: 16px;
+.project-status-index {
+  padding: 4px 8px;
+  border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.1);
+  min-width: 80px;
+  text-align: center;
 }
 
-.project-action {
-  margin-left: 16px;
-}
-
-.details-link {
-  color: #ff4f12;
+.details-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #1890ff;
+  color: white;
   text-decoration: none;
+  border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: background-color 0.2s;
   white-space: nowrap;
 }
 
-.details-link:hover {
-  color: #ff6b35;
+.details-button:hover {
+  background-color: #40a9ff;
+  color: white;
+  text-decoration: none;
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-  .project-plate {
+  .project-main-content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
   }
   
-  .project-info {
-    width: 100%;
-    justify-content: space-between;
+  .project-status-index {
+    align-self: flex-start;
   }
   
   .project-action {
-    margin-left: 0;
     align-self: flex-end;
   }
 }

@@ -20,13 +20,70 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Заголовок с кнопкой */
+.header-with-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .page-title {
-  margin: 0 0 24px 0;
+  margin: 0;
   font-size: 24px;
   font-weight: 600;
   color: #333;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Кнопка создания проекта */
+.create-project-btn {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(255, 77, 79, 0.2);
+}
+
+.create-project-btn:hover {
+  background: #ff7875;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 77, 79, 0.3);
+}
+
+.create-project-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 77, 79, 0.2);
+}
+
+.create-project-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-icon {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Кнопка в пустом состоянии */
+.empty-state-btn {
+  margin-top: 16px;
+  padding: 14px 24px;
+  font-size: 16px;
 }
 
 .projects-list {
@@ -52,9 +109,13 @@
 
 .empty-state {
   text-align: center;
-  padding: 40px;
+  padding: 60px 40px;
   color: #999;
   font-size: 16px;
+}
+
+.empty-state p {
+  margin-bottom: 20px;
 }
 
 /* Адаптивность */
@@ -69,5 +130,49 @@
   
   .page-title {
     font-size: 20px;
+  }
+  
+  .header-with-action {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .page-title {
+    text-align: center;
+  }
+  
+  .create-project-btn {
+    justify-content: center;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+  
+  .empty-state {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-container {
+    padding: 12px;
+  }
+  
+  .projects-section {
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  .page-title {
+    font-size: 18px;
+  }
+  
+  .create-project-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .btn-icon {
+    font-size: 16px;
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectList';
 import '../styles/User.css';
 
@@ -63,7 +64,17 @@ const User = () => {
       <main className="user-content">
         <div className="user-container">
           <div className="projects-section">
-            <h1 className="page-title">Мои проекты</h1>
+            <div className="header-with-action">
+              <h1 className="page-title">Мои проекты</h1>
+              <Link to="/create-project">
+              <button 
+                className="create-project-btn"
+                disabled={loading}
+              >
+                <span className="btn-icon">+</span>
+                Создать новый проект
+              </button></Link>
+            </div>
             
             {loading && (
               <div className="loading-message">Загрузка проектов...</div>
@@ -84,7 +95,13 @@ const User = () => {
                   ))
                 ) : (
                   <div className="empty-state">
-                    У вас пока нет проектов
+                    <p>У вас пока нет проектов</p>
+                    <Link to="/create-project"><button 
+                      className="create-project-btn empty-state-btn"
+                    >
+                      <span className="btn-icon">+</span>
+                      Создать первый проект
+                    </button></Link>
                   </div>
                 )}
               </div>
