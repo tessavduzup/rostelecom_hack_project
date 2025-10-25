@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { validateNumber, validateDate } from '../utils/validators';
-import { loginUser, sendRevenue } from '../api/authAPI';
+import { loginUser } from '../api/authAPI';
 
 function RevenueForm() {
   const {
@@ -29,7 +29,7 @@ function RevenueForm() {
         if (new Date(data.date_start) > new Date(data.date_end)){
           throw new Error('Дата начала не может быть позже даты окончания')
         }
-
+        
         setSubmitError('')
         setSubmitSuccess('')
 
@@ -81,7 +81,7 @@ function RevenueForm() {
 
           <h3>Статус начисления выручки</h3>
           <select
-            {...register("status", {
+            {...register("category", {
               required: "Выберите категорию"
             })}
           >

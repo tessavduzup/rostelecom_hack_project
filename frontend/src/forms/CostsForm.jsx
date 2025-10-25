@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { validateNumber, validateDate } from '../utils/validators';
-import { loginUser, sendCosts } from '../api/authAPI';
+import { loginUser } from '../api/authAPI';
 
 function CostsForm() {
   const {
@@ -80,8 +80,8 @@ function CostsForm() {
 
           <h3>Вид затрат</h3>
           <select
-            {...register("type", {
-              required: "Выберите вид затрат"
+            {...register("category", {
+              required: "Выберите категорию"
             })}
           >
           {categories.map(option => (
@@ -93,8 +93,8 @@ function CostsForm() {
 
           <h3>Статус отражения затрат</h3>
           <select
-            {...register("status", {
-              required: "Выберите статус затрат"
+            {...register("category", {
+              required: "Выберите категорию"
             })}
           >
           {categories.map(option => (
