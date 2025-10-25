@@ -34,7 +34,7 @@ function Login() {
 
   return (
     <>
-      <div>
+      <div id='loginForm' className='main_container'>
         <h1>Авторизация</h1>
 
         {submitSuccess && <div className='submitSuccess'>{submitSuccess}</div>}
@@ -63,8 +63,10 @@ function Login() {
 
           <h3><button type='submit'>Войти</button></h3>
         </form>
-        <h4>Нет аккаунта?</h4>
-        <Link to='/reg'>Зарегистрироваться</Link>
+        <div className='no_wrap'>
+          <h4>Нет аккаунта? </h4>
+          <Link to='/reg'>Зарегистрироваться</Link>
+        </div>
       </div>
     </>
   )

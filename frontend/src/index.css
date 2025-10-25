@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'PT Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -67,17 +67,78 @@ body {
   }
 }
 
-button:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-  border-color: #ff4f12;
-}
-button:active {
-  transform: scale(0.9);
+.errors{
+  margin: -6px 0 0;
+  font-size: 13px;
+  color: #b91c1c;
 }
 
+form > h3{
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 3px 0 1px;
+}
 /* Утилитарные классы для адаптивности */
 .container {
   width: 100%;
   padding: 0 16px;
+}
+
+.no_wrap{
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.no_wrap a{
+  text-decoration: none;
+  background: linear-gradient(90deg, #792FC7, #AB4984, #CA5A58, #F4701C);
+  background-size: 300% 100%; /* для анимации */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 3s ease infinite;
+  transition: all 0.4s ease;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.no_wrap a{
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+form > h3 > button,
+button[type="submit"]{
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid linear-gradient(90deg, var(--purple), var(--orange));
+  background: linear-gradient(135deg, var(--purple), var(--orange));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .05s ease, filter .15s ease;
+}
+form > h3 > button:hover{ filter: brightness(1.03); }
+form > h3 > button:active{ 
+  transform: translateY(1px); 
+  background: linear-gradient(135deg, var(--orange), var(--purple));
 }

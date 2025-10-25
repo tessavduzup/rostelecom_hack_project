@@ -37,7 +37,6 @@ export async function getProjectAttribute() {
     } catch (error) {
         throw new Error(error.response?.data?.message || 'Ошибка получения атрибутов проекта');
     }
-    
 }
 
 export async function submitProject(userData) {
