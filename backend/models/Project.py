@@ -3,6 +3,8 @@ from typing import Optional
 
 import sqlalchemy
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import ForeignKey
 from Base import Base
 
 class Project(Base):
@@ -17,13 +19,13 @@ class Project(Base):
     stage_id: Mapped[int] = mapped_column(nullable=False)
     realisation_probability: Mapped[float] = mapped_column()
     manager_name: Mapped[str] = mapped_column(nullable=False)
-    business_segment_id: Mapped[int] = mapped_column(nullable=False)
+    business_segment_id: Mapped[int] = mapped_column(ForeignKey("business_segments.id"), nullable=False)
     implementation_year: Mapped[int] = mapped_column(nullable=False)
     is_industry_solution: Mapped[bool] = mapped_column(default=False)
     is_forecast_accepted: Mapped[bool] = mapped_column(default=False)
     is_dzo_implementation: Mapped[bool] = mapped_column(default=False)
     is_management_control_required: Mapped[bool] = mapped_column(default=False)
-    evaluation_status_id: Mapped[int] = mapped_column()
+    evaluation_status_id: Mapped[int] = mapped_column(ForeignKey("evaluation_statuses.id"), )
     industry_manager: Mapped[str] = mapped_column()
     project_number: Mapped[str] = mapped_column()
     created_date: Mapped[datetime] = mapped_column(default=datetime.now)

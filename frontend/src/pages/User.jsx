@@ -7,7 +7,7 @@ const { Content } = Layout;
 
 const User = () => {
   return (
-    <div className="app-container"> {/* Добавляем контейнер */}
+    <div className="app-container">
       <Layout>
         <Header />
         <Content>

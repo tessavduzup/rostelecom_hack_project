@@ -29,3 +29,12 @@ export async function registerUser(userData) {
         throw new Error(error.response?.data?.message || 'Ошибка регистрации');
     }
 }
+
+export async function submitProject(userData) {
+    try {
+        const response = await API.post('/create-project', userData);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Ошибка отправки проекта')
+    }
+}
