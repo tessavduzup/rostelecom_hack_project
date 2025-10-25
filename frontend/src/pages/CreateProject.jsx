@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   Form,
   Input,
@@ -310,7 +310,7 @@ const CreateProject = () => {
           {/* Финансовая информация */}
           <Row gutter={[24, 16]}>
             <Col span={12}>
-              <Card size="small" title="Общая сумма выручки" extra={<Tag color="green">+ Добавить</Tag>}>
+              <Card size="small" title="Общая сумма выручки" extra={<Tag color="green"><Link to="/r"><Button>+ Добавить</Button></Link></Tag>}>
                 <Form.Item name="revenue" initialValue={0}>
                   <InputNumber
                     style={{ width: '100%' }}
@@ -322,7 +322,7 @@ const CreateProject = () => {
               </Card>
             </Col>
             <Col span={12}>
-              <Card size="small" title="Общее количество затрат" extra={<Tag color="red">+ Добавить</Tag>}>
+              <Card size="small" title="Общее количество затрат" extra={<Tag color="red"><Link to="/cr"><Button>+ Добавить</Button></Link></Tag>}>
                 <Form.Item name="costs" initialValue={0}>
                   <InputNumber
                     style={{ width: '100%' }}

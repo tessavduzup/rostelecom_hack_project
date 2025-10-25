@@ -33,6 +33,7 @@ function RevenueForm() {
         setSubmitError('')
         setSubmitSuccess('')
 
+
         setSubmitSuccess('Выручка успешно добавлена!')
       } catch (error) {
         setSubmitError(error.message || 'Выручку не получилось добавить!')
