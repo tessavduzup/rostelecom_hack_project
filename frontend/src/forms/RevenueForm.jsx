@@ -33,12 +33,6 @@ function RevenueForm() {
         setSubmitError('')
         setSubmitSuccess('')
 
-        const userData = await sendRevenue({
-          date_start: data.date_start,
-          date_end: data.date_end,
-          amount: data.amount,
-          status: data.status
-        })
 
         setSubmitSuccess('Выручка успешно добавлена!')
       } catch (error) {

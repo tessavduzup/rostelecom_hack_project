@@ -5,7 +5,6 @@ import Login from './pages/Login';
 import Registration from './pages/Registration';
 import User from './pages/User';
 import CreateProject from './pages/CreateProject';
-import './index.css';
 import RevenueForm from './forms/RevenueForm';
 import CostsForm from './forms/CostsForm'
 

@@ -30,20 +30,11 @@ export async function registerUser(userData) {
     }
 }
 
-export async function sendRevenue(userData) {
+export async function submitProject(userData) {
     try {
-        const response = await API.post('/create-project/send-revenue', userData);
+        const response = await API.post('/create-project', userData);
         return response.data;
     } catch (error) {
-        throw new Error(error.response?.data?.message || 'Ошибка отправки выручки')
-    }
-}
-
-export async function sendCosts(userData) {
-    try {
-        const response = await API.post('/create-project/send-costs', userData);
-        return response.data;
-    } catch (error) {
-        throw new Error(error.response?.data?.message || 'Ошибка отправки затрат')
+        throw new Error(error.response?.data?.message || 'Ошибка отправки проекта')
     }
 }

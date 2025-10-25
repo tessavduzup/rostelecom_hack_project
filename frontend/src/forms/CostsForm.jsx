@@ -33,15 +33,6 @@ function CostsForm() {
         setSubmitError('')
         setSubmitSuccess('')
 
-        const userData = await sendCosts({
-            date_start: data.date_start,
-            date_end: data.date_end,
-            amount: data.amount,
-            type: data.type,
-            status: data.status,
-
-        })
-
         setSubmitSuccess('Затраты успешно добавлены!')
       } catch (error) {
         setSubmitError(error.message || 'Затраты не получилось добавить!')
