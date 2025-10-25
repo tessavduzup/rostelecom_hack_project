@@ -1,6 +1,4 @@
-# security.py
 from enum import Enum
-from typing import List
 
 
 class Permission(str, Enum):
