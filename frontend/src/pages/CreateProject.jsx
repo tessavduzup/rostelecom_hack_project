@@ -56,10 +56,7 @@ const CreateProject = () => {
     { id: 5, name: 'Договор', probability: 90 },
     { id: 6, name: 'Реализация', probability: 100 }
   ];
-   
 
-
-  
   const managers = [
     { id: 1, name: 'Иванов А.В.' },
     { id: 2, name: 'Петрова С.И.' },
