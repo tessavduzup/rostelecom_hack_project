@@ -7,6 +7,7 @@ import CreateProject from './pages/CreateProject';
 import RevenueForm from './forms/RevenueForm';
 import CostsForm from './forms/CostsForm'
 import Header from './components/Header';
+import Analyst from './pages/Analyst';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/create-project" element={<CreateProject />} />
         <Route path="/r" element={<RevenueForm />} />
         <Route path="/cr" element={<CostsForm />} />
+        <Route path="/anal" element={<Analyst />} />
       </Routes>
     </Router>
     </></>

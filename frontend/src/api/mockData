@@ -1,0 +1,104 @@
+export const mockMetadataAPI = {
+  getFilters: () => Promise.resolve({
+    project_attributes: [
+      { field: "project_name", type: "text", label: "Название проекта" },
+      { field: "project_stage", type: "select", label: "Этап проекта" },
+      { field: "manager", type: "select", label: "Менеджер" },
+      { field: "service_type", type: "select", label: "Тип услуги" },
+      { field: "revenue", type: "number", label: "Выручка" },
+      { field: "start_date", type: "date", label: "Дата начала" },
+      { field: "end_date", type: "date", label: "Дата окончания" }
+    ]
+  }),
+
+  getFilterOptions: (field) => {
+    const options = {
+      project_stage: ["инициация", "планирование", "исполнение", "закрытие", "на паузе"],
+      manager: ["Иванов И.И.", "Петров П.П.", "Сидорова С.С.", "Козлова А.В."],
+      service_type: ["ИТ-услуги", "Телеком", "Консалтинг", "Облачные решения"]
+    };
+    return Promise.resolve(options[field] || []);
+  },
+
+  getReportTemplates: () => Promise.resolve([
+    {
+      id: "financial_overview",
+      name: "Финансовый обзор",
+      fields: ["project_name", "manager", "revenue", "service_type"]
+    },
+    {
+      id: "project_stages", 
+      name: "Стадии проектов",
+      fields: ["project_name", "project_stage", "manager", "start_date"]
+    },
+    {
+      id: "manager_performance",
+      name: "Эффективность менеджеров",
+      fields: ["manager", "project_stage", "revenue", "service_type"]
+    }
+  ])
+};
+
+export const mockReportsAPI = {
+  executeQuery: (query) => {
+    console.log("Executing query:", query);
+    
+    // Генерируем тестовые данные на основе запроса
+    const mockData = Array.from({ length: 15 }, (_, index) => {
+      const managers = ["Иванов И.И.", "Петров П.П.", "Сидорова С.С."];
+      const stages = ["инициация", "планирование", "исполнение", "закрытие"];
+      const services = ["ИТ-услуги", "Телеком", "Консалтинг"];
+      
+      return {
+        project_name: `Проект ${index + 1}`,
+        manager: managers[index % managers.length],
+        project_stage: stages[index % stages.length],
+        service_type: services[index % services.length],
+        revenue: Math.floor(Math.random() * 1000000) + 50000,
+        start_date: `2024-${String((index % 12) + 1).padStart(2, '0')}-01`,
+        end_date: `2024-${String((index % 12) + 3).padStart(2, '0')}-28`
+      };
+    });
+
+    // Фильтруем данные согласно запросу
+    let filteredData = mockData;
+    if (query.filters && query.filters.length > 0) {
+      filteredData = mockData.filter(item => {
+        return query.filters.every(filter => {
+          if (!filter.field || !filter.value) return true;
+          
+          switch (filter.operator) {
+            case 'equals':
+              return item[filter.field] == filter.value;
+            case 'contains':
+              return String(item[filter.field]).toLowerCase().includes(String(filter.value).toLowerCase());
+            case 'greater':
+              return Number(item[filter.field]) > Number(filter.value);
+            case 'less':
+              return Number(item[filter.field]) < Number(filter.value);
+            default:
+              return true;
+          }
+        });
+      });
+    }
+
+    // Выбираем только запрошенные поля
+    const resultData = filteredData.map(item => {
+      const result = {};
+      query.fields.forEach(field => {
+        result[field] = item[field];
+      });
+      return result;
+    });
+
+    return Promise.resolve({
+      metadata: {
+        fields: query.fields,
+        total_count: resultData.length,
+        executed_at: new Date().toISOString()
+      },
+      data: resultData
+    });
+  }
+};
