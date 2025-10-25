@@ -1,8 +1,9 @@
 from datetime import datetime
 import sqlalchemy
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey
-from .Base import Base
+from . import Base, Project, User
+
 
 class ProjectHistory(Base):
     __tablename__ = 'project_history'
@@ -15,6 +16,10 @@ class ProjectHistory(Base):
     old_value: Mapped[str] = mapped_column(sqlalchemy.Text())
     new_value: Mapped[str] = mapped_column(sqlalchemy.Text())
     change_type: Mapped[str] = mapped_column()
+
+    # 🔗 Relationships
+    project: Mapped["Project"] = relationship("Project", back_populates="history_records")
+    user: Mapped["User"] = relationship("User", back_populates="project_changes")
 
     def __repr__(self) -> str:
         return (
