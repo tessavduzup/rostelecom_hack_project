@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Mapped, mapped_column
-from Base import Base
+from .Base import Base
 
 class Service(Base):
     __tablename__ = 'services'

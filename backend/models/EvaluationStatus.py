@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Mapped, mapped_column
-from Base import Base
+from .Base import Base
 
 class EvaluationStatus(Base):
     __tablename__ = 'evaluation_statuses'
