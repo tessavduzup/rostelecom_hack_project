@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import ForeignKey
-from Base import Base
+from .Base import Base
 
 class Cost(Base):
     __tablename__ = 'costs'

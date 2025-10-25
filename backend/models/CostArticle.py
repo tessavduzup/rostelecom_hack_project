@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Mapped, mapped_column
-from Base import Base
+from .Base import Base
 
 class CostArticle(Base):
     __tablename__ = 'cost_articles'

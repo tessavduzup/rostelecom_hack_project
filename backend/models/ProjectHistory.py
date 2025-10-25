@@ -2,7 +2,7 @@ from datetime import datetime
 import sqlalchemy
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import ForeignKey
-from Base import Base
+from .Base import Base
 
 class ProjectHistory(Base):
     __tablename__ = 'project_history'
