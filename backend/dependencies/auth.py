@@ -4,7 +4,7 @@ from fastapi.security import HTTPBearer
 from sqlalchemy.orm import Session
 
 from ..db.database import get_db
-from ..models import User
+from ..models.User import User
 from ..auth import verify_token
 
 security = HTTPBearer()

@@ -1,11 +1,19 @@
 # routes/projects.py
+from datetime import datetime
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, joinedload
 
-from ..database import get_db
-from ..models import Project, User, Revenue, Cost
-from ..schemas import ProjectShortResponse, ProjectDetailResponse, RevenueResponse, CostResponse, ProjectUpdate
-from ..dependencies import get_current_user
+from ..db.database import get_db
+from ..models.Stage import Stage
+from ..models.User import User
+from ..models.Revenue import Revenue
+from ..models.Cost import Cost
+from ..models.Project import Project
+from ..schemas.project import ProjectShortResponse, ProjectDetailResponse, ProjectUpdate
+from ..schemas.revenue import RevenueResponse
+from ..schemas.cost import CostResponse
+from ..dependencies.auth import get_current_user
 
 router = APIRouter(prefix="/projects", tags=["projects"])
 
