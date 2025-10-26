@@ -1,6 +1,7 @@
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey
-from .Base import Base
+from . import Base, Project, AccrualStatus
+
 
 class Revenue(Base):
     __tablename__ = 'revenues'
@@ -12,6 +13,9 @@ class Revenue(Base):
     amount: Mapped[float] = mapped_column(nullable=False)
     accrual_status_id: Mapped[int] = mapped_column(ForeignKey("accrual_statuses.id"), nullable=False)
 
+    # 🔗 Relationships
+    project: Mapped["Project"] = relationship("Project", back_populates="revenues")
+    accrual_status: Mapped["AccrualStatus"] = relationship("AccrualStatus", back_populates="revenues")
 
     def __repr__(self) -> str:
         return (

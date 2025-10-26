@@ -1,6 +1,7 @@
 from datetime import datetime
-from sqlalchemy.orm import Mapped, mapped_column
-from .Base import Base
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from . import Base, ProjectHistory
+
 
 class User(Base):
     __tablename__ = 'users'
@@ -14,6 +15,13 @@ class User(Base):
     patronymic: Mapped[str] = mapped_column(nullable=False)
     created_at: Mapped[datetime] = mapped_column(default=datetime.now)
     deleted_at: Mapped[datetime] = mapped_column()
+
+    # 🔗 Relationship: связь с ProjectHistory
+    project_changes: Mapped[list["ProjectHistory"]] = relationship(
+        "ProjectHistory",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
 
     def __repr__(self) -> str:
         return (

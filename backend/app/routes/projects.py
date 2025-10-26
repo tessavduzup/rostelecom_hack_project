@@ -1,9 +1,6 @@
-# routes/projects.py
 from datetime import datetime
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, joinedload
-
 from ..db.database import get_db
 from ..models.Stage import Stage
 from ..models.User import User
@@ -16,7 +13,6 @@ from ..schemas.cost import CostResponse
 from ..dependencies.auth import get_current_user
 
 router = APIRouter(prefix="/projects", tags=["projects"])
-
 
 @router.get("/", response_model=list[ProjectShortResponse])
 def get_my_projects(
