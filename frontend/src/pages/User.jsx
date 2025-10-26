@@ -63,7 +63,7 @@ const User = () => {
     <div className="app-container">
       <main className="user-content">
         <div className="user-container">
-          <div className="projects-section">
+          <div className="projects-section main_container">
             <div className="header-with-action">
               <h1 className="page-title">Мои проекты</h1>
               <Link to="/create-project">

@@ -1,8 +1,8 @@
 .project-plate {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Выравнивание по верхнему краю */
   justify-content: space-between;
-  padding: 16px;
+  padding: 16px 20px;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -14,64 +14,69 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.project-main-content {
+.project-left-section {
   display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 12px;
-}
-
-.project-name-section {
-  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px; /* Небольшой отступ между названием и статусом */
 }
 
 .project-name {
   font-size: 16px;
   font-weight: 500;
   color: #333;
+  margin: 0;
 }
 
 .project-status-index {
-  padding: 4px 8px;
+  padding: 2px 8px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
-  min-width: 80px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .details-button {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 8px 20px;
   background-color: #1890ff;
   color: white;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   transition: background-color 0.2s;
   white-space: nowrap;
+  margin-top: 2px; /* Чтобы выровнять с названием */
 }
 
-.details-button:hover {
-  background-color: #40a9ff;
-  color: white;
-  text-decoration: none;
+.details-button:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(77, 145, 255, 0.3);
+}
+.details-button:active{
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(77, 139, 255, 0.275);
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-  .project-main-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .project-plate {
+    padding: 12px 16px;
+  }
+  
+  .project-name {
+    font-size: 14px;
   }
   
   .project-status-index {
-    align-self: flex-start;
+    font-size: 10px;
+    padding: 1px 6px;
   }
   
-  .project-action {
-    align-self: flex-end;
+  .details-button {
+    padding: 6px 12px;
+    font-size: 13px;
   }
 }
