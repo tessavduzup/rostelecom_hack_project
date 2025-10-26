@@ -18,8 +18,8 @@ class ProjectHistory(Base):
     change_type: Mapped[str] = mapped_column()
 
     # 🔗 Relationships
-    project: Mapped["Project"] = relationship("Project", back_populates="history_records")
-    user: Mapped["User"] = relationship("User", back_populates="project_changes")
+    project: Mapped["Project"] = relationship("Project")
+    user: Mapped["User"] = relationship("User")
 
     def __repr__(self) -> str:
         return (

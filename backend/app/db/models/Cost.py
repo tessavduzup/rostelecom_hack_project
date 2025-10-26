@@ -18,10 +18,10 @@ class Cost(Base):
     amount: Mapped[float] = mapped_column(nullable=False)
 
     # 🔗 Relationships
-    project: Mapped["Project"] = relationship("Project", back_populates="costs")
-    cost_article: Mapped["CostArticle"] = relationship("CostArticle", back_populates="costs")
-    cost_type: Mapped["CostType"] = relationship("CostType", back_populates="costs")
-    reflection_status: Mapped["ReflectionStatus"] = relationship("ReflectionStatus", back_populates="costs")
+    project: Mapped["Project"] = relationship("Project")
+    cost_article: Mapped["CostArticle"] = relationship("CostArticle")
+    cost_type: Mapped["CostType"] = relationship("CostType")
+    reflection_status: Mapped["ReflectionStatus"] = relationship("ReflectionStatus")
 
     def __repr__(self) -> str:
         return (

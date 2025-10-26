@@ -14,8 +14,8 @@ class Revenue(Base):
     accrual_status_id: Mapped[int] = mapped_column(ForeignKey("accrual_statuses.id"), nullable=False)
 
     # 🔗 Relationships
-    project: Mapped["Project"] = relationship("Project", back_populates="revenues")
-    accrual_status: Mapped["AccrualStatus"] = relationship("AccrualStatus", back_populates="revenues")
+    project: Mapped["Project"] = relationship("Project")
+    accrual_status: Mapped["AccrualStatus"] = relationship("AccrualStatus")
 
     def __repr__(self) -> str:
         return (

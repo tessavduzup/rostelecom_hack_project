@@ -44,11 +44,11 @@ class Project(Base):
     done_this_period: Mapped[Optional[str]] = mapped_column(sqlalchemy.Text())
     next_period_plans: Mapped[Optional[str]] = mapped_column(sqlalchemy.Text())
 
-    service: Mapped["Service"] = relationship("Service", back_populates="projects")
-    payment_type: Mapped["PaymentType"] = relationship("PaymentType", back_populates="projects")
-    stage: Mapped["Stage"] = relationship("Stage", back_populates="projects")
-    business_segment: Mapped["BusinessSegment"] = relationship("BusinessSegment", back_populates="projects")
-    evaluation_status: Mapped[Optional["EvaluationStatus"]] = relationship("EvaluationStatus", back_populates="projects")
+    service: Mapped["Service"] = relationship("Service")
+    payment_type: Mapped["PaymentType"] = relationship("PaymentType")
+    stage: Mapped["Stage"] = relationship("Stage")
+    business_segment: Mapped["BusinessSegment"] = relationship("BusinessSegment")
+    evaluation_status: Mapped[Optional["EvaluationStatus"]] = relationship("EvaluationStatus")
 
     revenues: Mapped[List["Revenue"]] = relationship("Revenue", back_populates="project", cascade="all, delete-orphan")
     costs: Mapped[List["Cost"]] = relationship("Cost", back_populates="project", cascade="all, delete-orphan")

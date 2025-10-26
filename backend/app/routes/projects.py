@@ -2,11 +2,11 @@ from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, joinedload
 from ..db.database import get_db
-from ..models.Stage import Stage
-from ..models.User import User
-from ..models.Revenue import Revenue
-from ..models.Cost import Cost
-from ..models.Project import Project
+from backend.app.db.models import Stage
+from backend.app.db.models import User
+from backend.app.db.models import Revenue
+from backend.app.db.models import Cost
+from backend.app.db.models import Project
 from ..schemas.project import ProjectShortResponse, ProjectDetailResponse, ProjectUpdate
 from ..schemas.revenue import RevenueResponse
 from ..schemas.cost import CostResponse

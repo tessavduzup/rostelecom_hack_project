@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/ProjectList.css'
-
+import '../styles/ProjectList.css';
+ 
 const ProjectCard = ({ project }) => {
   const getStatusInfo = (status) => {
     const statusMap = {
@@ -17,13 +17,9 @@ const ProjectCard = ({ project }) => {
 
   return (
     <div className="project-plate">
-      <div className="project-main-content">
-        {/* Название проекта слева */}
-        <div className="project-name-section">
-          <span className="project-name">{project.name}</span>
-        </div>
-        
-        {/* Нижний индекс в прямоугольнике слева от кнопки */}
+      {/* Левая часть: название и статус */}
+      <div className="project-left-section">
+        <div className="project-name">{project.name}</div>
         <div 
           className="project-status-index"
           style={{ 
@@ -33,16 +29,16 @@ const ProjectCard = ({ project }) => {
         >
           {statusInfo.text}
         </div>
-        
-        {/* Кнопка "Подробнее" справа */}
-        <div className="project-action">
-          <Link 
-            to={`/project/${project.id}`} 
-            className="details-link details-button"
-          >
-            Подробнее
-          </Link>
-        </div>
+      </div>
+      
+      {/* Правая часть: кнопка */}
+      <div className="project-action">
+        <Link 
+          to={`/project/${project.id}`} 
+          className="details-link details-button"
+        >
+          Подробнее
+        </Link>
       </div>
     </div>
   );

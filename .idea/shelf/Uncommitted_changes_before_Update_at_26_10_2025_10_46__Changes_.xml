@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_26_10_2025_10_46_[Changes]" date="1761464804912" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_10_2025_10_46_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 26.10.2025 10:46 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="backend/alembic/README" />
+    <option name="AFTER_PATH" value="backend/app/db/alembic/README" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_10_2025_10_46_[Changes]/README" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="backend/alembic/script.py.mako" />
+    <option name="AFTER_PATH" value="backend/app/db/alembic/script.py.mako" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_10_2025_10_46_[Changes]/script.py.mako" />
+  </binary>
+</changelist>
