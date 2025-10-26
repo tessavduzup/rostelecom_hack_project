@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb1d5dc5-6b41-4354-a6bd-fb1f57a19407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/dependencies/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/dependencies/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/routes/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/routes/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/routes/projects.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/routes/projects.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/auth/Token.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/auth/Token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/auth/TokenData.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/auth/TokenData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/auth/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/auth/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/auth/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +53,7 @@
       <recent name="C:\Users\USER\Desktop\хакатон\rostelecom_hack_project\backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\c1208\OneDrive\Desktop\hackathon-rostelecom\backend\app" />
       <recent name="C:\Users\c1208\OneDrive\Desktop\hackathon-rostelecom\backend\auth" />
       <recent name="C:\Users\USER\Desktop\хакатон\rostelecom_hack_project\backend\app\db" />
       <recent name="C:\Users\USER\Desktop\хакатон\rostelecom_hack_project\backend\app" />
