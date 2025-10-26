@@ -14,7 +14,7 @@ class User(Base):
     name: Mapped[str] = mapped_column(nullable=False)
     patronymic: Mapped[str] = mapped_column(nullable=False)
     created_at: Mapped[datetime] = mapped_column(default=datetime.now)
-    deleted_at: Mapped[datetime] = mapped_column()
+    deleted_at: Mapped[datetime] = mapped_column(default=datetime.now)
 
     # 🔗 Relationship: связь с ProjectHistory
     project_changes: Mapped[list["ProjectHistory"]] = relationship(

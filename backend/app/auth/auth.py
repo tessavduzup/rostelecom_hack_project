@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jwt.exceptions import InvalidTokenError
 from pwdlib import PasswordHash
 from sqlalchemy.orm import Session
-from backend.app.models import User
+from backend.app.db.models import User
 
 SECRET_KEY = "9f861ec94d20895096a9d54b319aa148fcf1b9d3851cbba80dbfa12a05485131"
 ALGORITHM = "HS256"

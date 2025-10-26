@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from ..db.database import get_db
 from starlette import status
-from ..models.User import User
+from backend.app.db.models import User
 from ..schemas.user import UserCreate, UserLogin, UserResponse
 from ..schemas.auth import Token
 from ..dependencies.auth import get_current_user
