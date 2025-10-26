@@ -13,7 +13,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.add_middleware(AuditMiddleware)
-
 app.include_router(projects.router)
 app.include_router(auth.router)

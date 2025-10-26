@@ -5,11 +5,11 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from ..db.database import get_db
 from starlette import status
-from backend.app.db.models import User
+from ..db.models import User
 from ..schemas.user import UserCreate, UserLogin, UserResponse
 from ..schemas.auth import Token
 from ..dependencies.auth import get_current_user
-from backend.app.auth.auth import authenticate_user, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token, get_password_hash, \
+from ..auth.auth import authenticate_user, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token, get_password_hash, \
     verify_password
 
 router = APIRouter(prefix="/auth", tags=["authentication"])
