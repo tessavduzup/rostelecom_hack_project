@@ -1,19 +1,10 @@
-
-
-/* ===== Login (без изменения разметки) ===== */
-:root{
-  --purple: #6d28d9;
-  --orange: #f97316;
-  --text: #111827;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --radius: 14px;
+#loginForm{
+  max-width: 500px;
 }
 
-/* Карточка: любой DIV, который напрямую содержит form */
 div:has(> form){
   width: min(100%, 420px);
-  margin: 80px auto;
+  margin: 40px auto;
   padding: 28px;
   background: #fff;
   color: var(--text);
@@ -22,7 +13,6 @@ div:has(> form){
   box-shadow: 0 18px 50px rgba(17,24,39,.08);
 }
 
-/* Заголовки */
 div:has(> form) > h1{
   font-size: 28px;
   font-weight: 800;
@@ -30,7 +20,6 @@ div:has(> form) > h1{
   margin: 0 0 20px;
 }
 
-/* Сообщения об успехе/ошибке (из JSX: submitSuccess/submitError) */
 .submitSuccess, .submitErrors{
   margin: 0 0 14px;
   padding: 10px 12px;
@@ -41,15 +30,7 @@ div:has(> form) > h1{
 .submitSuccess{ background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
 .submitErrors{ background:#fef2f2; color:#991b1b; border-color:#fecaca; }
 
-/* Форма и поля */
 form{ display: grid; gap: 14px; }
-
-form > h3{        /* твои подписи «Имя пользователя», «Пароль», … */
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
-  margin: 6px 0 6px;
-}
 
 /* Инпуты без классов */
 form input[type="text"],
@@ -69,34 +50,6 @@ form input:focus{
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--purple) 18%, transparent);
 }
 
-/* Текст ошибок под полями (className="errors") */
-.errors{
-  margin: 2px 0 0;
-  font-size: 13px;
-  color: #b91c1c;
-}
-
-/* Кнопка у тебя находится внутри <h3> */
-form > h3 > button,
-button[type="submit"]{
-  width: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--purple), var(--orange));
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .05s ease, filter .15s ease;
-}
-form > h3 > button:hover{ filter: brightness(1.03); }
-form > h3 > button:active{ transform: translateY(1px); }
-
-/* Низ карточки: «Нет аккаунта? Зарегистрироваться» */
 div:has(> form) > h4{
   margin: 16px 0 6px;
   font-size: 14px;

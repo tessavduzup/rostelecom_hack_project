@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../components/ProjectList';
+import '../styles/ProjectList.css'
 
 const ProjectCard = ({ project }) => {
   const getStatusInfo = (status) => {
@@ -17,19 +17,32 @@ const ProjectCard = ({ project }) => {
 
   return (
     <div className="project-plate">
-      <div className="project-info">
-        <div className="project-name">{project.name}</div>
+      <div className="project-main-content">
+        {/* Название проекта слева */}
+        <div className="project-name-section">
+          <span className="project-name">{project.name}</span>
+        </div>
+        
+        {/* Нижний индекс в прямоугольнике слева от кнопки */}
         <div 
-          className="project-status"
-          style={{ color: statusInfo.color, borderColor: statusInfo.color }}
+          className="project-status-index"
+          style={{ 
+            backgroundColor: statusInfo.color,
+            color: 'white'
+          }}
         >
           {statusInfo.text}
         </div>
-      </div>
-      <div className="project-action">
-        <Link to={`/project/${project.id}`} className="details-link">
-          Подробнее →
-        </Link>
+        
+        {/* Кнопка "Подробнее" справа */}
+        <div className="project-action">
+          <Link 
+            to={`/project/${project.id}`} 
+            className="details-link details-button"
+          >
+            Подробнее
+          </Link>
+        </div>
       </div>
     </div>
   );

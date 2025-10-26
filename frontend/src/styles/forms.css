@@ -48,13 +48,6 @@ form input[type="date"]:required:invalid {
   border-color: #fca5a5;
 }
 
-/* ===== Label-like стили для твоих <h3> ===== */
-form > h3 {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
-  margin: 12px 0 8px;
-}
 form > h3 + select,
 form > h3 + input[type="date"] {
   margin-bottom: 6px;
@@ -100,12 +93,6 @@ form input[type="date"]::-webkit-clear-button {
   display: none;
 }
 
-/* ===== Ошибки (p.errors) ===== */
-form .errors {
-  margin: 4px 0 8px;
-  font-size: 13px;
-  color: #b91c1c;
-}
 
 /* ===== Disabled ===== */
 form select:disabled,

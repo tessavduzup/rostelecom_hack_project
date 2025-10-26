@@ -18,6 +18,10 @@ function Registration() {
         try {
             setSubmitError('');
             setSubmitSuccess('');
+
+            if (data.password !== data.second_password){
+                throw new Error("Пароли должны совпадать!")
+            }
             
             const userData = await registerUser({
                 firstName: data.first_name,
@@ -39,13 +43,13 @@ function Registration() {
     }
 
     return (
-        <div>
+        <div className='main_container'>
             <h1>Регистрация</h1>
 
             {submitSuccess && <div className='submitSuccess'>{submitSuccess}</div>}
             {submitError && <div className='submitErrors'>{submitError}</div>}
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} id='registrationForm'>
                 <h3>Имя:</h3>
                 <input
                     type="text"
@@ -95,10 +99,24 @@ function Registration() {
                     })}
                 />
                 {errors.password && <p className="errors">{errors.password.message}</p>}
+
+                <h3>Повторите пароль:</h3>
+                <input
+                    type="password"
+                    {...register("second_password", {
+                        required: "Введите пароль ещё раз",
+                        validate: validatePassword
+                    })}
+                />
+                {errors.second_password && <p className="errors">{errors.second_password.message}</p>}
+                
                 <h3><button type='submit'>Зарегистрироваться</button></h3>
             </form>
-            <h3>Уже есть аккаунт?</h3>
-            <Link to="/login">Войти</Link>
+            <div className='no_wrap'>
+                <h4>Уже есть аккаунт?</h4>
+                <Link to="/login">Войти</Link>
+            </div>
+            
         </div>
     )
 }
