@@ -9,7 +9,7 @@ from ..models.User import User
 from ..schemas.user import UserCreate, UserLogin, UserResponse
 from ..schemas.auth import Token
 from ..dependencies.auth import get_current_user
-from ...auth.auth import authenticate_user, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token, get_password_hash, \
+from backend.app.auth.auth import authenticate_user, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token, get_password_hash, \
     verify_password
 
 router = APIRouter(prefix="/auth", tags=["authentication"])
