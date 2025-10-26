@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/ProjectList.css';
-
+ 
 const ProjectCard = ({ project }) => {
   const getStatusInfo = (status) => {
     const statusMap = {
